@@ -1,0 +1,81 @@
+﻿@model IEnumerable<WebBanMacBook.Models.ListProduct>
+
+@{
+    Layout = "~/Views/Shared/LayoutPartial.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/styles.css">
+    <title>Home</title>
+</head>
+
+<body>
+
+
+<!-- MAIN CONTENT -->
+
+<!-- BRAND NAME -->
+
+<!-- Tab -->
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="~/Home/HomeMenu">HOME</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Macbook Pro 2017 Cũ</li>
+            </ol>
+        </nav>
+    </div>
+    <br>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                
+                    <nav class="navbar">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Thứ tự sắp xếp
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="~/Home/ListProductMP2017OldForm?tang=ASC">Giá từ thấp đến cao</a>
+                                <a class="dropdown-item" href="~/Home/ListProductMP2017OldForm?giam=Desc">Giá từ cao đến thấp</a>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                        <div class="col-md-3">
+                            <div class="item">
+                                <a href="~/ListProduct/DetailsForm?productid=@item.ProductId">
+                                    <img src="@item.ImageSource" alt="#" class="img-fluid">
+                                </a>
+                                <h4><p style="color:red">@String.Format("{0:0,0}", item.Price) VND</p></h4>
+
+                                <a href="~/ListProduct/DetailsForm?productid=@item.ProductId" class="title" style="text-decoration: none">
+                                    @item.Name
+                                    @item.GroupId @item.YearId - @item.DisplayId - @item.Status
+                                </a>
+                            </div>
+                            <br /><br />
+                        </div>
+                        }
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- CONTACT -->
+    
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+
+</html>

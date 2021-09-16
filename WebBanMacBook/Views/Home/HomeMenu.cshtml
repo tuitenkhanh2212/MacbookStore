@@ -1,0 +1,129 @@
+﻿@model IEnumerable<WebBanMacBook.Models.ListProduct>
+
+@{
+    Layout = "~/Views/Shared/LayoutPartial.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/styles.css">
+    <title>Home</title>
+</head>
+
+<body>
+<!-- IMAGE SLIDER -->
+<div class="container">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/Content/Image/desk.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Content/Image/desk2.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Content/Image/desk3.png" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<br>
+<!-- MAIN CONTENT -->
+<div class="main-content">
+    <!--Mac Noi Bat -->
+
+    <div class="container">
+        <div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="item-img">
+                        <a href="~/Home/ListProductMPOldForm"><img src="/Content/Image/Another/MPOLD.jpg" class="img-thumbnail " /></a><br />
+                    </div>
+                    <div class="item-img">
+                        <a href="~/Home/ListProductMPNewForm"><img src="/Content/Image/Another/MPNew.jpg" class="img-thumbnail " /></a><br />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="item-img">
+                        <a href="~/Home/ListProductMAOldForm"><img src="/Content/Image/Another/MAOLD.jpg" class="img-thumbnail " /></a><br />
+                    </div>
+                    <div class="item-img">
+                        <a href="~/Home/ListProductMANewForm"><img src="/Content/Image/Another/MANew.jpg" class="img-thumbnail " /></a><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/><hr/>
+        <h3 style="text-align: center;">Các loại máy Macbook bán chạy</h3>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="item">
+                        <a href="~/ListProduct/DetailsForm?productid=@item.ProductId">
+                            <img src="@item.ImageSource" alt="#" class="img-fluid">
+                        </a>
+                        <h4>
+                            <p style="color: red">@String.Format("{0:0,0}", item.Price) VND</p>
+                        </h4>
+
+                        <a href="~/ListProduct/DetailsForm?productid=@item.ProductId" class="title" style="text-decoration: none">
+                            @item.Name
+                            @item.GroupId @item.YearId - @item.DisplayId - @item.Status
+                        </a>
+                    </div>
+                    <br/><br/>
+                </div>
+            }
+        </div>
+        <br/><hr/>
+        <h3 style="text-align: center; font-weight: bold">We are responsible for your business<br/></h3>
+        <p style="text-align: center">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        <div class="row">
+
+            <div class="col-md-6">
+                <img src="/Content/Image/Avt/Empty.jpg" alt="" class="img-thumbnail"/>
+                <h3 style="text-align: center; font-weight: bold">Hồ Trần Gia Khánh</h3>
+                <h5 style="text-align: center">Full Stack</h5>
+                <p style="text-align: center">
+                    Have an obsession for victory<br/>
+                    I'm proud of myself and you<br/>
+                    We must be the change we wish to see...
+                </p>
+
+            </div>
+            <div class="col-md-6">
+                <img src="/Content/Image/Avt/Empty.jpg" alt="" class="img-thumbnail"/>
+                <h3 style="text-align: center; font-weight: bold">Trịnh Đức Anh</h3>
+                <h5 style="text-align: center">Trừ Full Stack gì cũng làm</h5>
+                <p style="text-align: center">Life isn't about finding yourself <br/>Life is about creating yourself.</p>
+            </div>
+        </div><br/>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+
+</html>

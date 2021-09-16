@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WebBanMacBook.Models.ListThuocTinh>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/styles.css">
+    <title>CpuForm</title>
+</head>
+<body>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
+                
+                <a href="/Admin/ManageForm" style="text-decoration: none; color: black;text-align: left">
+                    <div class="btn btn-outline-danger">
+                    Trở về
+                    </div>
+                </a>
+
+                <a href="/Admin/CreateCPUForm" style="text-decoration: none; color: black; float: right">
+                    <div class="btn btn-outline-success">
+                    Thêm bộ xử lý CPU
+                    </div>
+                </a>
+
+            </div>
+            <br />
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CpuID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CpuName)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CpuID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.CpuName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Chỉnh sửa", "UpdateCPUForm", new { cpuid = item.CpuID})
+                        </td>
+                        <td>
+                            @Html.ActionLink("Xóa", "DeleteCpu", new { cpuid = item.CpuID })
+                            
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+﻿@model IEnumerable<WebBanMacBook.Models.ListProduct>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/styles.css">
+    <title>PhukienForm</title>
+</head>
+<body>
+    <a href="/Admin/ManageForm" style="text-decoration: none; color: black;float: left">
+        <div class="btn btn-outline-danger">
+            Trở về
+        </div>
+    </a>
+
+    <a href="/Admin/CreatePhukienForm" style="text-decoration: none; color: black">
+        <div class="btn btn-outline-success">
+            Thêm Phụ kiện
+        </div>
+    </a>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageSource)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageSource1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageSource2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageSource3)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.ColorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearId)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.GroupId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sold)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <img src="@item.ImageSource" alt="" class="img-thumbnail" style="max-height: 50px"/>
+            </td>
+            <td>
+                <img src="@item.ImageSource1" alt="" class="img-thumbnail" style="max-height: 50px"/>
+            </td>
+            <td>
+                <img src="@item.ImageSource2" alt="" class="img-thumbnail" style="max-height: 50px"/>
+            </td>
+            <td>
+                <img src="@item.ImageSource3" alt="" class="img-thumbnail" style="max-height: 50px"/>
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.ColorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearId)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "UpdatePhukienForm", new { productid = @item.ProductId }) |
+                @Html.ActionLink("Delete", "DeletePhukien", new { productid = @item.ProductId })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

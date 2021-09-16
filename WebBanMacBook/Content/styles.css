@@ -1,0 +1,117 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.body{
+    width: 100%;
+    display:flex;
+}
+/* .top-header .icon-cart {
+    background: black;
+    padding: 5px 0;
+}
+
+.top-header .icon-cart a {
+    color: white;
+    text-align:right;
+} */
+.headerlayout {
+    padding: 10px 16px;
+    background: black;
+    color: #f1f1f1;
+}
+.main-content .zoom-box.zoom-active {
+    z-index: 1;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.sticky + .content {
+    padding-top: 102px;
+}
+.top-header .brand-name {
+    text-align: center;
+    padding: 15px 0;
+    text-decoration: none;
+}
+.brand-name .ShopName{
+    color: Black;
+    text-decoration: none;
+}
+.navbar navbar-expand-sm .btn-group{
+    color: Black;
+    text-decoration: none;
+}
+.btn-light{
+    width: 150px;
+    height: auto;
+    background:white;
+}
+.btn-primary{
+    margin-top: 10px;
+}
+.dropdown-item{
+    font-family: Arial, Helvetica, sans-serif;
+} 
+.dropdown:hover> .dropdown-menu {
+    display: block;
+}
+/*.main-content .item .img-fluid{
+    height: auto;
+    width: auto;
+}*/
+.main-content .item{
+    text-align: center;
+
+}
+
+.main-content .item:hover{
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.main-content .item .title:hover{
+    color: black;
+}
+.container .item:hover {
+    transform: scale(1.01);
+    transition: 0.5s all ease-in-out;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.container .item-img:hover {
+    transform: scale(0.9);
+    transition: 0.5s all ease-in-out;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+/*.main-content .img-thumbnail{
+    margin-top: 5px;
+}*/
+.contact {
+    margin-top: 50px;
+    padding: 50px 0;
+    border-top: 2px solid #ebebeb;
+    border-bottom: 2px solid #ebebeb;
+}
+
+.contact p {
+    color: #a7a7a7;
+}
+
+.contact .store-info {
+    color: #a7a7a7;
+    margin-top: 15px;
+}
+
+footer {
+    text-align: right;
+    vertical-align: middle;
+    padding: 50px 0;
+}
+

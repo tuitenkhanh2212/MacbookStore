@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MacBookStore" Class="MyDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-D3S5MUL\SQLEXPRESS;Initial Catalog=MacBookStore;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MacBookStoreConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Color" Member="Colors">
+    <Type Name="Color">
+      <Column Name="ColorID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ColorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Color_Product" Member="Products" ThisKey="ColorID" OtherKey="ColorID" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdminName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Account" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CPU" Member="CPUs">
+    <Type Name="CPU">
+      <Column Name="CpuID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CpuName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="CPU_Product" Member="Products" ThisKey="CpuID" OtherKey="CpuID" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Account" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Birth" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Customer_Order" Member="Orders" ThisKey="CustomerID" OtherKey="CustomerID" Type="Order" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Display" Member="Displays">
+    <Type Name="Display">
+      <Column Name="DisplayID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DisplayName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Display_Product" Member="Products" ThisKey="DisplayID" OtherKey="DisplayID" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DisplayCard" Member="DisplayCards">
+    <Type Name="DisplayCard">
+      <Column Name="DisplayCardID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DisplayCardName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="DisplayCard_Product" Member="Products" ThisKey="DisplayCardID" OtherKey="DisplayCardID" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Group]" Member="Groups">
+    <Type Name="Group">
+      <Column Name="GroupID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Group_Product" Member="Products" ThisKey="GroupID" OtherKey="GroupID" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HardDrive" Member="HardDrives">
+    <Type Name="HardDrive">
+      <Column Name="HardDriveID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HardDriveName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="HardDrive_Product" Member="Products" ThisKey="HardDriveID" OtherKey="HardDriveID" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Order]" Member="Orders">
+    <Type Name="Order">
+      <Column Name="OrderID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Paid" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DeliveryStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="OrderDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DelieveryDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Order_OrderDetail" Member="OrderDetails" ThisKey="OrderID" OtherKey="OrderID" Type="OrderDetail" />
+      <Association Name="Customer_Order" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrderDetails" Member="OrderDetails">
+    <Type Name="OrderDetail">
+      <Column Name="OrderID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="Order_OrderDetail" Member="Order" ThisKey="OrderID" OtherKey="OrderID" Type="Order" IsForeignKey="true" />
+      <Association Name="Product_OrderDetail" Member="Product" ThisKey="ProductID" OtherKey="ProductID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Stock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sold" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ImageSourceMain" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ImageSource1" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ImageSource2" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ImageSource3" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CpuID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DisplayCardID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DisplayID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ColorID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="YearID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HardDriveID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RamID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GroupID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Product_OrderDetail" Member="OrderDetails" ThisKey="ProductID" OtherKey="ProductID" Type="OrderDetail" />
+      <Association Name="Color_Product" Member="Color" ThisKey="ColorID" OtherKey="ColorID" Type="Color" IsForeignKey="true" />
+      <Association Name="CPU_Product" Member="CPU" ThisKey="CpuID" OtherKey="CpuID" Type="CPU" IsForeignKey="true" />
+      <Association Name="Display_Product" Member="Display" ThisKey="DisplayID" OtherKey="DisplayID" Type="Display" IsForeignKey="true" />
+      <Association Name="DisplayCard_Product" Member="DisplayCard" ThisKey="DisplayCardID" OtherKey="DisplayCardID" Type="DisplayCard" IsForeignKey="true" />
+      <Association Name="Group_Product" Member="Group" ThisKey="GroupID" OtherKey="GroupID" Type="Group" IsForeignKey="true" />
+      <Association Name="HardDrive_Product" Member="HardDrive" ThisKey="HardDriveID" OtherKey="HardDriveID" Type="HardDrive" IsForeignKey="true" />
+      <Association Name="RAM_Product" Member="RAM" ThisKey="RamID" OtherKey="RamID" Type="RAM" IsForeignKey="true" />
+      <Association Name="Year_Product" Member="Year" ThisKey="YearID" OtherKey="YearID" Type="Year" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RAM" Member="RAMs">
+    <Type Name="RAM">
+      <Column Name="RamID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RamName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="RAM_Product" Member="Products" ThisKey="RamID" OtherKey="RamID" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Year" Member="Years">
+    <Type Name="Year">
+      <Column Name="YearID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="YearName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Year_Product" Member="Products" ThisKey="YearID" OtherKey="YearID" Type="Product" />
+    </Type>
+  </Table>
+</Database>

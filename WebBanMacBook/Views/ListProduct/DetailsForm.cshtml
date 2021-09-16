@@ -1,0 +1,164 @@
+﻿@model WebBanMacBook.Models.ListProduct
+
+
+@{
+    Layout = "~/Views/Shared/LayoutPartial.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/jquery.jqZoom.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/styles.css">
+
+    <title>Home</title>
+</head>
+
+<body>
+
+    <!-- MAIN CONTENT -->
+    <!-- BRAND NAME -->
+    
+    <!-- Tab -->
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="~/Home/HomeMenu">HOME</a></li>
+                <li class="breadcrumb-item active" aria-current="page">CHI TIẾT SẢN PHẨM</li>
+            </ol>
+        </nav>
+    </div>
+    <br>
+    <!--Nội Dung-->
+    <div class="main-content">
+        <div class="container">
+            <h3><b>@Model.Name - @Model.GroupId @Model.YearId @Model.DisplayId - @Model.CpuId/@Model.RamId/@Model.HardDriveId - @Model.Status</b></h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="">
+                        <div class="zoom-box zoom-active">
+                            <img src="@Model.ImageSource" alt="#" class="img-fluid">
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="zoom-box zoom-active">
+                                    <img src="@Model.ImageSource1" alt="#" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="zoom-box zoom-active">
+                                    <img src="@Model.ImageSource2" alt="#" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="zoom-box zoom-active">
+                                    <img src="@Model.ImageSource3" alt="#" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h2 style="color: red; text-align: center;"><b>Giá : @String.Format("{0:0,0}", Model.Price) VND</b></h2>
+                    <h5 style="font-weight: bold">Số lượng tồn : @Model.Stock </h5>
+                    <h5 style="font-weight: bold">Số lượng đã bán : @Model.Sold</h5>
+                    <div id="Datmua">
+                        <b>
+                            <a href="@Url.Action("ThemGiohang", "GioHang", new {@iMaProduct = @Model.ProductId, @strURL = Request.Url.ToString()})" style="color: white; font-weight: bold; text-decoration: none">
+                                <div class="btn btn-dark col-md-12" style="font-size: 15px">
+                                    <p style="text-align: center">ĐẶT MUA <br /> (Giao hàng tận nơi hoặc lấy tại cửa hàng)</p>
+                                </div>
+                            </a>
+                        </b>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="btn btn-primary col-md-12" style="font-size: 11px;">
+                                <b>TRẢ GÓP</b><br>
+                                (Xét duyệt qua điện thoại)
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="btn btn-primary col-md-12" style="font-size: 11px;">
+                                <b>TRẢ GÓP 0% QUA THẺ</b><br>
+                                (Visa, Master Card,JCB)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col-md-9" style="font-size: 15px;">
+                            Trả trước 30%, số tháng trả trước:
+                        </div>
+                        <div class="col-md-3">
+                            <!-- <select name="" id="">
+                                <option value="">12 Tháng</option>
+                                <option value="">9 Tháng</option>
+                                <option value="">6 Tháng</option>
+                                <option value="">3 Tháng</option>
+                            </select> -->
+                        </div>
+                    </div>
+                    <br>
+                    <div class="" style="background-color: silver; padding: 15px 15px;">
+                        Bảo hành phần cứng 12 tháng<br>
+                        • Hỗ trợ:<br>
+                        - Bảo dưỡng phần cứng<br>
+                        - Cài đặt phần mềm<br>
+                        - Xử lý các lỗi người dùng<br>
+                        • Tặng bao da HNMac trị giá 400k: https://bit.ly/36j4J7A<br>
+                        • Giảm giá 10 - 20% phụ kiện khi mua cùng máy<br>
+                        • Tặng Voucher 200k cho lần mua máy tiếp theo<br>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>CHI TIẾT SẢN PHẨM</h3>
+                    <b>CPU</b>:&ensp;@Model.CpuId<br><br>
+
+                    <b>RAM</b>:&ensp;@Model.RamId<br><br>
+
+                    <b>Ổ cứng</b>:&ensp;@Model.HardDriveId<br><br>
+
+                    <b>Card Rời</b>:&ensp;@Model.DisplayCardId<br><br>
+
+                    <b>Trạng Thái</b>:&ensp;@Model.Status<br><br>
+
+                    <b>Màu sắc</b>:&ensp;@Model.ColorId<br><br>
+
+                    <b>Màn hình</b>:&ensp;@Model.DisplayId<br><br>
+
+                    <b>Năm giới thiệu</b>:&ensp;@Model.YearId<br><br>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- CONTACT -->
+
+
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+
+    <script src="~/Scripts/jquery.jqZoom.js"></script>
+
+    <script>
+        $(function () {
+            $("img").jqZoom({
+                selectorWidth: 30,
+                selectorHeight: 30,
+                viewerWidth: 400,
+                viewerHeight: 300
+            });
+        })
+    </script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+
+</html>

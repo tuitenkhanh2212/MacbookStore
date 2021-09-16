@@ -1,0 +1,183 @@
+﻿@using WebBanMacBook.Models
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+<div class="headerlayout" id="myHeader">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                &ensp;
+                <a style="text-decoration: none; color: white;font-weight: bold" href="~/Home/HomeMenu">
+                    <i class="fab fa-apple"></i>
+                    MACBOOK STORE
+                </a>
+
+            </div>
+            <div class="col-md-5">
+                &ensp;
+                @Html.Action("GiohangPartial", "Giohang")
+                &ensp;
+                @if (Session["info"] == null)
+                {
+                    @Html.Partial("RegisterPartial")
+
+                    @Html.Partial("LoginPartial")
+
+                }
+                @if (Session["info"] != null)
+                {
+                    @Html.Partial("AccountDetailPartial")
+                    <a href="@Url.Action("Logout", "Customer")" style="color: white"> Log out</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<header class="top-header">
+    <div class="container">
+        <div class="brand-name">
+            <a style="text-decoration: none; color: black;" href="~/Home/HomeMenu">
+                <h1 style="font-weight: bold">
+                    <i class="fab fa-apple"></i>
+                    MACBOOK STORE
+                </h1>
+            </a>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="~/Home/HomeMenu">TRANG CHỦ</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            MACBOOK CŨ
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            <a class="dropdown-item" href="~/Home/ListProductMPOldForm"><H4>MACBOOK PRO</H4></a>
+                            <a class="dropdown-item" href="~/Home/ListProductMP2020OldForm">MACBOOK PRO 2020</a>
+                            <a class="dropdown-item" href="~/Home/ListProductMP2019OldForm">MACBOOK PRO 2019</a>
+                            <a class="dropdown-item" href="~/Home/ListProductMP2018OldForm">MACBOOK PRO 2018</a>
+                            <a class="dropdown-item" href="~/Home/ListProductMP2017OldForm">MACBOOK PRO 2017</a>
+                            <a class="dropdown-item" href="~/Home/ListProductMP2016OldForm">MACBOOK PRO 2016</a>
+                            <a class="dropdown-item" href="~/Home/ListProductMP2015OldForm">MACBOOK PRO 2015</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="~/Home/ListProductMAOldForm"><h4>MACBOOK AIR</h4></a>
+                            <a class="dropdown-item" href="~/Home/ListProductMA2020OldForm">MACBOOK AIR 2020</a>
+                            <a class="dropdown-item" href="~/Home/ListProductMA2019OldForm">MACBOOK AIR 2019</a>
+                            <a class="dropdown-item" href="~/Home/ListProductMA2018OldForm">MACBOOK AIR 2018</a>
+                            <a class="dropdown-item" href="~/Home/ListProductMA2017OldForm">MACBOOK AIR 2017</a>
+                            <a class="dropdown-item" href="~/Home/ListProductMA2016OldForm">MACBOOK AIR 2016</a>
+                            <a class="dropdown-item" href="~/Home/ListProductMA2015OldForm">MACBOOK AIR 2015</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            MACBOOK MỚI
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="~/Home/ListProductMPNewForm"><H4>MACBOOK PRO</H4></a>
+                            <a class="dropdown-item" href="~/Home/ListProductMP2020NewForm">MACBOOK PRO 2020</a>
+                            <a class="dropdown-item" href="~/Home/ListProductMP2019NewForm">MACBOOK PRO 2019</a>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="~/Home/ListProductMANewForm"><h4>MACBOOK AIR</h4></a>
+                            <a class="dropdown-item" href="~/Home/ListProductMA2020NewForm">MACBOOK AIR 2020</a>
+                            <a class="dropdown-item" href="~/Home/ListProductMA2019NewForm">MACBOOK AIR 2019</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            PHỤ KIỆN
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="~/Home/ListProductChuotPhimForm">CHUỘT - BÀN PHÍM</a>
+                            <a class="dropdown-item" href="~/Home/ListProductTuiForm">TÚI CHỐNG SỐC</a>
+                            <a class="dropdown-item" href="~/Home/ListProductCapForm">CÁP CHUYỂN ĐỔI</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/AboutUs/AboutUsForm">VỀ CHÚNG TÔI</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <div class="container">
+            <div class="container">
+                <div class="contact">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>About Us</h3>
+                            <div class="store-info">
+                                <p>
+                                    Hồ Trần Gia Khánh - Lãnh đạo tập đoàn 
+                                </p>
+                                <p>
+                                    Trịnh Đức Anh - Nhân viên quèn
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>My Account</h3>
+                            <div class="store-info">
+                                <a href="facebook.com/HoTran.GiaKhanh"><p>My Account <i class="fab fa-facebook-f"></i></p></a>
+                                <p>My Credit slips</p>
+                                <p>My Merchandise returns</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>Store Information</h3>
+                            <div class="store-info">
+                                The company name,<br>
+                                Lorem ipsum dolor,<br>
+                                Glasglow Dr 40 Fe 72.<br>
+                                Khanh22122000@gmail.com
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Thiết kế web Hồ Trần Gia Khánh - 1811063361</p>
+            </footer>
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+﻿@model WebBanMacBook.Models.ListProduct
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/styles.css">
+    <title>CreatePhuKienForm</title>
+</head>
+<body>
+<div class="container">
+@using (Html.BeginForm("CreatePhukienForm", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+        <h4>Thêm Phụ kiện</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+        <div class="col-md-4">
+
+            @Html.HiddenFor(model => model.ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @*<div class="col-md-10">
+                    @Html.EditorFor(model => model.ProductId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+                </div>*@
+
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" , @required = "required",
+                @oninvalid = "this.setCustomValidity('Vui lòng nhập Tên')",
+                @oninput = "setCustomValidity('')"} })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+
+            @Html.LabelFor(model => model.Stock, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "form-control",@required = "required",
+                @oninvalid = "this.setCustomValidity('Vui lòng nhập số lượng tồn')",
+                @oninput = "setCustomValidity('')" } })
+            @Html.ValidationMessageFor(model => model.Stock, "", new { @class = "text-danger" })
+                
+
+            @Html.LabelFor(model => model.Sold, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.Sold, new { htmlAttributes = new { @class = "form-control",@required = "required",
+                @oninvalid = "this.setCustomValidity('Vui lòng nhập Số lượng đã bán')",
+                @oninput = "setCustomValidity('')" } })
+            @Html.ValidationMessageFor(model => model.Sold, "", new { @class = "text-danger" })
+
+    
+            
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control",@required = "required",
+                @oninvalid = "this.setCustomValidity('Vui lòng nhập Mô Tả')",
+                @oninput = "setCustomValidity('')" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control",@required = "required",
+                @oninvalid = "this.setCustomValidity('Vui lòng nhập Giá')",
+                @oninput = "setCustomValidity('')",
+                @type = "number"
+            } })
+            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+
+
+        </div>
+        <div class="col-md-4">
+            
+            @Html.LabelFor(model => model.ImageSource, htmlAttributes: new { @class = "control-label col-md-2" })
+                
+            @*@Html.EditorFor(model => model.ImageSource, new { htmlAttributes = new { @class = "form-control",
+                    @required = "required",
+                    @oninvalid = "this.setCustomValidity('Vui lòng Chọn Ảnh')",
+                    @oninput = "setCustomValidity('')"
+                } })
+                     @Html.ValidationMessageFor(model => model.ImageSource, "", new { @class = "text-danger" })*@
+            <input type="file" value="" name="file" id="file" required title="Chọn hình" />
+
+            @Html.LabelFor(model => model.ImageSource1, htmlAttributes: new { @class = "control-label col-md-2" })
+            @*@Html.EditorFor(model => model.ImageSource1, new { htmlAttributes = new { @class = "form-control",
+                    @required = "required",
+                    @oninvalid = "this.setCustomValidity('Vui lòng Chọn Ảnh')",
+                    @oninput = "setCustomValidity('')"
+                } })
+                     @Html.ValidationMessageFor(model => model.ImageSource1, "", new { @class = "text-danger" })*@
+            <input type="file" value="" name="file1" id="file1" required title="Chọn hình" />
+
+
+            @Html.LabelFor(model => model.ImageSource2, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @*@Html.EditorFor(model => model.ImageSource2, new { htmlAttributes = new { @class = "form-control",
+                    @required = "required",
+                    @oninvalid = "this.setCustomValidity('Vui lòng Chọn Ảnh')",
+                    @oninput = "setCustomValidity('')"
+                } })
+                     @Html.ValidationMessageFor(model => model.ImageSource2, "", new { @class = "text-danger" })*@
+            <input type="file" value="" name="file2" id="file2" required title="Chọn hình" />
+
+            @Html.LabelFor(model => model.ImageSource3, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @*@Html.EditorFor(model => model.ImageSource3, new { htmlAttributes = new { @class = "form-control",
+                    @required = "required",
+                    @oninvalid = "this.setCustomValidity('Vui lòng chọn ảnh')",
+                    @oninput = "setCustomValidity('')"
+                } })
+                     @Html.ValidationMessageFor(model => model.ImageSource3, "", new { @class = "text-danger" })*@
+            <input type="file" value="" name="file3" id="file3" required title="Chọn hình" />
+
+
+        </div>
+        <div class="col-md-4">
+
+
+
+            @Html.LabelFor(model => model.ColorId, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.DropDownListFor(model => model.ColorId, new SelectList(Model.listcolor, "ColorId", "ColorName"), "", new
+            {
+                @class = "form-control",
+                @required = "required",
+                @oninvalid = "this.setCustomValidity('Vui lòng chọn màu')",
+                @oninput = "setCustomValidity('')"
+            })
+            @Html.ValidationMessageFor(model => model.ColorId, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.YearId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.DropDownListFor(model => model.YearId, new SelectList(Model.listyear, "YearId", "YearName"), "", new
+            {
+                @class = "form-control",
+                @required = "required",
+                @oninvalid = "this.setCustomValidity('Vui lòng chọn Năm')",
+                @oninput = "setCustomValidity('')"
+            })
+            @Html.ValidationMessageFor(model => model.YearId, "", new { @class = "text-danger" })
+
+
+            @Html.LabelFor(model => model.GroupId, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.DropDownListFor(model => model.GroupId, new SelectList(Model.listgroup, "GroupId", "GroupName"), "", new
+            {
+                @class = "form-control",
+                @required = "required",
+                @oninvalid = "this.setCustomValidity('Vui lòng chọn Loại sản phẩm')",
+                @oninput = "setCustomValidity('')"
+            })
+            @Html.ValidationMessageFor(model => model.GroupId, "", new { @class = "text-danger" })
+
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.Status, new
+            {
+                htmlAttributes = new
+                {
+                    @class = "form-control",
+                    @required = "required",
+                    @oninvalid = "this.setCustomValidity('Vui lòng nhập trạng thái')",
+                    @oninput = "setCustomValidity('')"
+                }
+            })
+            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+        </div>
+        </div>
+        </div>
+        <br/>
+        <input type="submit" value="Create" class="btn btn-outline-primary" />
+    }
+
+    <div>
+        @Html.ActionLink("Trở lại", "PhukienForm")
+    </div>
+    </div>
+</body>
+</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

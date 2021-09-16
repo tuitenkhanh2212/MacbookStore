@@ -1,0 +1,131 @@
+﻿@model IEnumerable<WebBanMacBook.Models.ListProduct>
+
+@{
+    Layout = "~/Views/Shared/LayoutPartial.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/styles.css">
+    <title>Home</title>
+</head>
+
+<body>
+
+
+<!-- MAIN CONTENT -->
+
+<!-- BRAND NAME -->
+
+<!-- Tab -->
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="~/Home/HomeMenu">HOME</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Danh sách sản phẩm</li>
+            </ol>
+        </nav>
+    </div>
+    <br>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="comboboxlist">
+                        <h4>Macbook Pro Cũ</h4>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Pro 2020 Cũ</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Pro 2019 Cũ</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Pro 2018 Cũ</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Pro 2017 Cũ</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Pro 2016 Cũ</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Pro 2015 Cũ</label><br>
+                        <h4>Macbook Air Cũ</h4>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Air 2020 Cũ</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Air 2019 Cũ</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Air 2018 Cũ</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Air 2017 Cũ</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Air 2016 Cũ</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Air 2015 Cũ</label><br>
+                        <h4>Macbook Pro New</h4>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Pro 2020</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Pro 2019</label><br>
+                        <h4>Macbook Air New</h4>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Air 2020</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Macbook Air 2019</label><br>
+                        <h4>Phụ kiện</h4>
+                        <input type="checkbox" class="">
+                        <label for="">Chuột - Bàn Phím</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Túi Chống Sốc</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Cáp Chuyển Đổi</label><br>
+                        <input type="checkbox" class="">
+                        <label for="">Sạc</label><br>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <nav class="navbar">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Thứ tự sắp xếp
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Thứ tự theo tên (A - Z)</a>
+                                <a class="dropdown-item" href="#">Thứ tự theo tên (Z - A)</a>
+                                <a class="dropdown-item" href="#">Giá từ thấp đến cao</a>
+                                <a class="dropdown-item" href="#">Giá cao thấp đến thấp</a>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md-3">
+                                <div class="item">
+                                    <a href="~/ListProduct/DetailsForm?productid=@item.ProductId">
+                                        <img src="@item.ImageSource" alt="#" class="img-fluid">
+                                    </a>
+                                    <h4><p style="color:red">@String.Format("{0:0,0}", @item.Price) VND</p></h4>
+
+                                    <a href="~/ListProduct/DetailsForm?productid=@item.ProductId" class="title">
+                                        @item.Name
+                                        @item.GroupId @item.YearId - @item.DisplayId - @item.Status
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CONTACT -->
+    
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+
+</html>
